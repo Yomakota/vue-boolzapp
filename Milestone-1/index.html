@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,17 +15,18 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+
 <body>
     <div id="root">
         <div class="container d-flex">
-            
+
             <div class="left-col">
                 <div class="header d-flex">
                     <div class="header-left d-flex">
                         <img src="img/avatar_io.jpg" alt="">
                         <h2>Nome Utente</h2>
                     </div>
-                    <div class="header-right d-flex">
+                    <div class="header-icons d-flex">
                         <i class="fas fa-circle-notch"></i>
                         <i class="fas fa-comment-alt"></i>
                         <i class="fas fa-ellipsis-v"></i>
@@ -39,15 +41,53 @@
                         <span class="msg">Attiva notifiche desktop</span>
                     </div>
                 </div>
+                <div class="search-bar d-flex">
+                    <label class="label">
+                        <i class="fas fa-search"></i>
+                    </label>
+                    <input class="input" type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div class="contacts-menu">
+                    <ul class="contacts-list">
+                        <li class="contact d-flex" v-for="contact, index in contacts" @click="selectedContact(index)" :class="(currentActiveElement == index) ? 'active' : ''">
+                            <div class="image-contact">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                            </div>
+                            <span class="name-contact">{{contact.name}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
             <div class="right-col">
-                <div class="header"></div>
-                <div class="main-right-col"></div>
-                <div class="write-msg"></div>
+                <div class="header d-flex">
+                    <div class="header-left d-flex">
+                        <img :src="`img/avatar${contacts[currentActiveElement].avatar}.jpg`" alt="">
+                        <div>
+                            <span class="name">{{contacts[currentActiveElement].name}}</span>
+                        </div>
+                    </div>
+                    <div class="header-icons d-flex">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="main-right-col d-flex">
+                    <div v-for="(message, index) in contacts[currentActiveElement].messages" class="msg" :class="(message.status == 'sent') ? 'msg sent' : 'msg received'">
+                        <span class="text-message">{{message.text}}</span>
+                    </div>
+                </div>    
+                <div class="write-msg">
+
+                </div>
             </div>
         </div>
 
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/script.js">
+
+    </script>
 </body>
 </html>

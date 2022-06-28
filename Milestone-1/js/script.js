@@ -7,6 +7,8 @@ var app = new Vue (
         el: '#root',
         data: {
 
+            currentActiveElement: 0,
+
             contacts: [
                 {
                     name: 'Michele',
@@ -92,6 +94,13 @@ var app = new Vue (
                     ],
                 },
             ]
+        },
+
+        methods: {
+
+            selectedContact(index){
+                this.currentActiveElement = index;
+            }
 
         }
     }

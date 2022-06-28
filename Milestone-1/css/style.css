@@ -18,6 +18,7 @@ body {
     --header: #E7E7E7;
     --notice-nav: #82D6FB;
     --sent-msg: #D0F8B2;
+    --active-contact: #E6E9E8;
 
     /* sizes */
     --right-col: 65%;
@@ -34,6 +35,35 @@ body {
     height: 700px;
 }
 
+/* HEADER */
+
+.container .header {
+    background-color: var(--header);
+    justify-content: space-between;
+}
+
+.container .header img {
+    height: 90px;
+    border-radius: 50%;
+    padding: .5em;
+}
+
+.container .header .header-icons i {
+    padding-right: .5em;
+    font-size: 20px;
+}
+
+.container .header .header-left {
+    align-items: center;
+    padding-left: 1em;
+}
+
+.container .header .header-icons {
+    align-items: center;
+    color: grey;
+    padding-right: 1em;
+}
+
 /* COL-LEFT */
 
 .left-col {
@@ -44,34 +74,9 @@ body {
 
 /* COL-LEFT-HEADER */
 
-.container .header {
-    background-color: var(--header);
-    justify-content: space-between;
-}
-
-.container .header-left {
-    align-items: center;
-    padding-left: 1em;
-}
-
-.container .header .header-left img {
-    height: 50px;
-    border-radius: 50%;
-}
-
 .container .header .header-left h2 {
     font-size: 1em;
     padding-left: 0.5em;
-}
-
-.container .header .header-right {
-    align-items: center;
-    color: grey;
-    padding-right: 1em;
-}
-
-.container .header .header-right i {
-    padding-right: .5em;
 }
 
 /* COL-LEFT-NOTICATIONS */
@@ -106,8 +111,93 @@ body {
     color: grey;
 }
 
+/* SEARCH-BAR LEFT-COL */
+
+.container .left-col .search-bar {
+    background-color: #F9F9F9;
+    padding: .5em;
+}
+
+.container .left-col .search-bar label {
+    width: 10%;
+    color: lightgrey;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+}
+
+.container .left-col .search-bar label i {
+    vertical-align: middle;
+}
+
+.container .left-col .search-bar input {
+    width: 90%;
+    border: 1px solid lightgrey;
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+}
+
+.container .left-col .search-bar label, input {
+    padding: .5em 1em;
+}
+
+/* CONTACTS */
+
+.container .left-col .contacts-menu .contacts-list .contact.active {
+    background-color: var(--active-contact);
+}
+
+.container .left-col .contacts-menu .contacts-list .contact .image-contact {
+    width: 25%;
+}
+
+.container .left-col .contacts-menu .contacts-list .contact .image-contact img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.container .left-col .contacts-menu .contacts-list .contact .name-contact {
+    padding: .5em;
+    font-size: 25px;
+}
+
 /* COL-RIGHT */
-.right-col {
+
+.container .right-col {
     width: var(--right-col);
     background: url(../img/mine.jpg);
+    flex-direction: column;
+}
+
+/* COL-RIGHT HEADER */
+
+.container .header .header-left{
+    width: 90%;
+}
+
+/* COL-RIGHT MAIN */
+
+.container .right-col .main-right-col {
+    flex-direction: column;
+    padding: 1em;
+}
+
+/* MESSAGE */
+
+.container .right-col .main-right-col .msg {
+    font-size: 20px;
+    padding: .5em;
+    margin: 0.5em 0;
+    border-radius: 0.8em;
+}
+
+.msg.sent {
+    align-self: flex-end;
+    background-color: var(--sent-msg);
+}
+
+.msg.received {
+    align-self: flex-start;
+    background-color: white;
 }
