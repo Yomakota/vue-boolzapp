@@ -19,9 +19,12 @@ body {
     --notice-nav: #82D6FB;
     --sent-msg: #D0F8B2;
     --active-contact: #E6E9E8;
+    --bottom-main: #E6E9E8;
 
     /* sizes */
     --right-col: 65%;
+    --header-height: 80px;
+    --main-bottom-height: 80px;
 }
 
 .d-flex {
@@ -40,6 +43,7 @@ body {
 .container .header {
     background-color: var(--header);
     justify-content: space-between;
+    height: var(--header-height);
 }
 
 .container .header img {
@@ -138,7 +142,8 @@ body {
     border-left: none;
 }
 
-.container .left-col .search-bar label, input {
+.container .left-col .search-bar label,
+input {
     padding: .5em 1em;
 }
 
@@ -170,34 +175,62 @@ body {
     flex-direction: column;
 }
 
-/* COL-RIGHT HEADER */
-
-.container .header .header-left{
-    width: 90%;
+.container .right-col .header-left .last-access {
+    color: grey;
 }
-
 /* COL-RIGHT MAIN */
 
 .container .right-col .main-right-col {
     flex-direction: column;
     padding: 1em;
+    height: calc(100% - var(--main-bottom-height) - var(--header-height));
 }
 
 /* MESSAGE */
 
 .container .right-col .main-right-col .msg {
-    font-size: 20px;
+    flex-direction: column;
+    font-size: 1.2em;
     padding: .5em;
     margin: 0.5em 0;
-    border-radius: 0.8em;
+    border-radius: 10px;
+    width: 50%;
 }
 
-.msg.sent {
+.container .right-col .main-right-col .msg .date {
+    font-size: 0.7em;
+    color: #AEB1B4;
+    align-self: flex-end;
+    padding: 0 0.5em 0.5em 0;
+}
+
+.sent {
     align-self: flex-end;
     background-color: var(--sent-msg);
 }
 
-.msg.received {
+.received {
     align-self: flex-start;
     background-color: white;
+}
+
+/* INPUT MESSAGE */
+
+.container .right-col .write-msg {
+    align-items: center;
+    justify-content: space-around;
+    height: var(--main-bottom-height);
+    background-color: var(--bottom-main);
+    padding: 1.5em;
+}
+
+.container .right-col .write-msg input {
+    border: 0;
+    width: 80%;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.container .right-col .write-msg i {
+    font-size: 1.5em;
 }
