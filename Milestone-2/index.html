@@ -49,7 +49,8 @@
                 </div>
                 <div class="contacts-menu">
                     <ul class="contacts-list">
-                        <li class="contact d-flex" v-for="contact, index in contacts">
+                        <li class="contact d-flex" v-for="contact, index in contacts" @click="selectedContact(index)"
+                            :class="(currentActiveElement == index) ? 'active' : ''">
                             <div class="image-contact">
                                 <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                             </div>
@@ -63,9 +64,9 @@
             <div class="right-col">
                 <div class="header d-flex">
                     <div class="header-left d-flex">
-                        <img :src="`img/avatar${contacts[0].avatar}.jpg`" alt="">
+                        <img :src="`img/avatar${contacts[currentActiveElement].avatar}.jpg`" alt="">
                         <div>
-                            <span class="name">{{contacts[0].name}}</span>
+                            <span class="name">{{contacts[currentActiveElement].name}}</span>
                             <div class="last-access">Ultimo accesso oggi alle</div>
                         </div>
                     </div>
@@ -76,11 +77,12 @@
                     </div>
                 </div>
                 <div class="main-right-col d-flex">
-                    <div v-for="(message, index) in contacts[0].messages" class="msg d-flex" :class="(message.status == 'sent') ? 'msg sent' : 'msg received'">
+                    <div v-for="(message, index) in contacts[currentActiveElement].messages" class="msg d-flex"
+                        :class="(message.status == 'sent') ? 'msg sent' : 'msg received'">
                         <span class="text">{{message.text}} </span>
                         <span class="date">{{message.date}} </span>
                     </div>
-                </div>    
+                </div>
                 <div class="write-msg d-flex">
                     <i class="far fa-smile"></i>
                     <input type="text" placeholder="Scrivi un messaggio">
@@ -94,4 +96,5 @@
 
     </script>
 </body>
+
 </html>
