@@ -167,6 +167,16 @@ input {
     font-size: 25px;
 }
 
+.container .left-col .contacts-menu .contacts-list .contact .date-contact {
+    color: grey;
+}
+
+.last-message-user {
+    font-size: 15px;
+    color: grey;
+}
+
+
 /* COL-RIGHT */
 
 .container .right-col {

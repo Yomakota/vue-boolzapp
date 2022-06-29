@@ -168,6 +168,35 @@ var app = new Vue(
 
             },
 
-        },
+            removeMessage(index) {
+                this.contacts[this.currentActiveElement].messages.splice(index, 1);
+
+                this.currentActiveMessage.status = false;
+                this.currentActiveMessage.index = null;
+
+                // console.log(this.contacts[this.currentActiveElement].messages[index]);
+            },
+            
+            dateLastMessage(index) {
+
+                if (this.contacts[index].messages.length > 0) {
+
+                    lastMessage = this.contacts[index].messages.length - 1;
+                    lastMessageDate = this.contacts[index].messages[lastMessage].date;
+
+                    return lastMessageDate;
+                }
+            },
+
+            lastMessage(index) {
+                if (this.contacts[index].messages.length > 0) {
+
+                    lastMessage = this.contacts[index].messages.length - 1;
+                    lastMessageText = this.contacts[index].messages[lastMessage].text;
+
+                    return lastMessageText;
+                }
+            },
+        }
     }
 );

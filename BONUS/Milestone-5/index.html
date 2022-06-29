@@ -54,11 +54,16 @@
                     <ul class="contacts-list">
                         <li class="contact d-flex" v-for="contact, index in contacts" @click="selectedContact(index)"
                             :class="(currentActiveElement == index) ? 'active' : ''" v-if="contact.visible">
-                            <div class="image-contact">
-                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                            <div class="d-flex">
+                                <div class="image-contact">
+                                    <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                                </div>
+                                <div class="name-contact">{{contact.name}}
+                                    <div class="last-message-user"> {{lastMessage(index)}}
+                                    </div>
+                                </div>
                             </div>
-                            <span class="name-contact">{{contact.name}}
-                            </span>
+                            <div class="date-contact"> {{dateLastMessage(index)}}</div>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +75,7 @@
                         <img :src="`img/avatar${contacts[currentActiveElement].avatar}.jpg`" alt="">
                         <div>
                             <span class="name">{{contacts[currentActiveElement].name}}</span>
-                            <div class="last-access">Ultimo accesso oggi alle</div>
+                            <div>{{dateLastMessage(currentActiveElement)}}</div>
                         </div>
                     </div>
                     <div class="header-icons d-flex">
@@ -89,7 +94,7 @@
 
                         <div class="drop-down-menu d-flex" v-if="currentActiveMessage.menu && index === currentActiveMessage.index">
                             <div class="info">info message</div>
-                            <div class="delete">delete message</div>
+                            <div class="delete" @click="removeMessage(index)" >delete message</div>
                         </div>
                     </div>
                 </div>
