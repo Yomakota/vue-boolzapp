@@ -80,14 +80,14 @@
                 </div>
                 <div class="main-right-col d-flex">
                     <div v-for="(message, index) in contacts[currentActiveElement].messages" class="msg d-flex"
-                        :class="(message.status == 'sent') ? 'msg sent' : 'msg received'">
+                        :class="(message.status == 'sent') ? 'sent' : 'received'">
                         <span class="text">{{message.text}} </span>
                         <span class="date">{{message.date}} </span>
                     </div>
                 </div>
                 <div class="write-msg d-flex">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendNewMessage"> >
+                    <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendNewMessage">
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>

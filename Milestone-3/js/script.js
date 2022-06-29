@@ -11,6 +11,8 @@ var app = new Vue(
 
             newMessage: '',
 
+            answer: 'ok',
+
             contacts: [
                 {
                     name: 'Michele',
@@ -106,18 +108,28 @@ var app = new Vue(
 
             sendNewMessage() {
 
-                messages = this.contacts[this.currentActiveElement].messages;
-                
-                data = dayjs().format("D/M/YYYY HH:mm");
+                data = dayjs().format("DD/MM/YYYY HH:mm");
 
                 if (this.newMessage.trim() != "") {
 
-                    messages.push({
+                    this.contacts[this.currentActiveElement].messages.push({
                         text: this.newMessage,
                         date: data,
-                        status: "sent",
-                    })
+                        status: 'sent',
+                    });
                 }
+
+                setTimeout(() => {
+
+                    answerReceviedDate = dayjs().format("DD/MM/YYYY HH:mm");
+
+                    this.contacts[this.currentActiveElement].messages.push({
+                        text: this.answer,
+                        status: 'received',
+                        date: answerReceviedDate,
+                    });
+
+                }, 1000);
 
                 this.newMessage = '';
             },
