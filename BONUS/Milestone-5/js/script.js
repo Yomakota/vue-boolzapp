@@ -94,6 +94,11 @@ var app = new Vue(
                 },
             ],
 
+            currentActiveMessage: {
+                menu: false,
+                index: null,
+            },
+
             currentActiveElement: 0,
 
             newMessage: '',
@@ -101,11 +106,6 @@ var app = new Vue(
             answer: 'ok',
 
             searchInputText: '',
-
-            currentActiveMessage: {
-                menu: false,
-                index: null,
-            }
         },
 
         methods: {
@@ -154,9 +154,18 @@ var app = new Vue(
             },
 
             showDropDownMenu(index) {
-                
-                this.currentActiveMessage.menu = !this.currentActiveMessage.menu;
-                this.currentActiveMessage.index = index;
+
+                if (this.currentActiveMessage.menu && this.currentActiveMessage.index === index) {
+                    this.currentActiveMessage.menu = false;
+
+                } else {
+                    this.currentActiveMessage.index = index;
+                    this.currentActiveMessage.menu = true;
+                }
+
+                console.log(this.currentActiveMessage.menu);
+                console.log(this.currentActiveMessage.index);
+
             },
 
         },

@@ -88,14 +88,9 @@
                         <span class="date">{{message.date}} </span>
 
                         <div class="drop-down-menu d-flex" v-if="currentActiveMessage.menu && index === currentActiveMessage.index">
-                            <div>info message</div>
-                            <div>delete message</div>
+                            <div class="info">info message</div>
+                            <div class="delete">delete message</div>
                         </div>
-                        <!-- <i class="fas fa-chevron-down" @click="message.menu = !message.menu"></i> -->
-                        <!-- <div class="menu-options" v-show="message.menu">
-                            <div class="info">Info messaggio</div>
-                            <div class="delete">Cancella messaggio</div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="write-msg d-flex">
