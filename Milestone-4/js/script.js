@@ -5,13 +5,6 @@ var app = new Vue(
     {
         el: '#root',
         data: {
-
-            currentActiveElement: 0,
-
-            newMessage: '',
-
-            answer: 'ok',
-
             contacts: [
                 {
                     name: 'Michele',
@@ -96,7 +89,15 @@ var app = new Vue(
                         }
                     ],
                 },
-            ]
+            ],
+
+            currentActiveElement: 0,
+
+            newMessage: '',
+
+            answer: 'ok',
+
+            searchInputText: '',
         },
 
         methods: {
@@ -132,6 +133,18 @@ var app = new Vue(
 
                 this.newMessage = '';
             },
+
+            searchContactChat() {
+
+                this.contacts.forEach((contact) => {
+                    if (contact.name.toLowerCase().includes(this.searchInputText.toLowerCase())) {
+                        contact.visible = true;
+                    } else {
+                        contact.visible = false;
+                    }
+                });
+            },
+
         },
     }
 );

@@ -47,12 +47,13 @@
                     <label class="label">
                         <i class="fas fa-search"></i>
                     </label>
-                    <input class="input" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="searchInputText" @keyup="searchContactChat" type="text" placeholder="Cerca o inizia una nuova chat"
+                    name="" class="input">
                 </div>
                 <div class="contacts-menu">
                     <ul class="contacts-list">
                         <li class="contact d-flex" v-for="contact, index in contacts" @click="selectedContact(index)"
-                            :class="(currentActiveElement == index) ? 'active' : ''">
+                            :class="(currentActiveElement == index) ? 'active' : ''" v-if="contact.visible">
                             <div class="image-contact">
                                 <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                             </div>
