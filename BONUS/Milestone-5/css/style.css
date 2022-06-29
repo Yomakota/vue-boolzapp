@@ -196,6 +196,7 @@ input {
     margin: 0.5em 0;
     border-radius: 10px;
     width: 50%;
+    position: relative;
 }
 
 .container .right-col .main-right-col .msg .date {
@@ -213,6 +214,36 @@ input {
 .received {
     align-self: flex-start;
     background-color: white;
+}
+
+.main-right-col .msg .fa-chevron-down {
+    position: absolute;
+    top: 20%;
+    right: 6%;
+    color: #B1B1B1;
+    font-size: 0.8em;
+    display: none;
+}
+
+.main-right-col .msg:hover .fa-chevron-down {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.main-right-col .menu-options {
+    position: absolute;
+    right: 0;
+    bottom: -70%;
+    width: 160px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.75);
+    z-index: 999;
+    font-size: 0.95em;
+}
+
+.drop-down-menu {
+    flex-direction: column;
+    align-self: flex-end;    
 }
 
 /* INPUT MESSAGE */

@@ -80,15 +80,22 @@
                     </div>
                 </div>
                 <div class="main-right-col d-flex">
-                    <div v-for="(message, index) in contacts[currentActiveElement].messages" class="msg d-flex"
-                        :class="(message.status == 'sent') ? 'sent' : 'received'">
-                        <span class="text">{{message.text}} </span>
+                    <div class="msg d-flex" :class="(message.status == 'sent') ? 'sent' : 'received'" v-for="(message, index) in contacts[currentActiveElement].messages">
+                        <span class="text">{{message.text}}
+                            <i class="fas fa-chevron-down" @click="showDropDownMenu(index)"></i>
+                        </span>
+
                         <span class="date">{{message.date}} </span>
-                        <i class="fas fa-chevron-down" @click="message.menu = !message.menu"></i>
-                        <div v-show="message.menu">
-                            <div class="message-info">Info messaggio</div>
-                            <div class="message-delete">Cancella messaggio</div>
+
+                        <div class="drop-down-menu d-flex" v-if="currentActiveMessage.menu && index === currentActiveMessage.index">
+                            <div>info message</div>
+                            <div>delete message</div>
                         </div>
+                        <!-- <i class="fas fa-chevron-down" @click="message.menu = !message.menu"></i> -->
+                        <!-- <div class="menu-options" v-show="message.menu">
+                            <div class="info">Info messaggio</div>
+                            <div class="delete">Cancella messaggio</div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="write-msg d-flex">
