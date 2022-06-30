@@ -14,24 +14,30 @@ img {
     display: block;
 }
 
-.p-15 {
-    padding: 15px;
-}
-
 input {
     outline: none;
+}
+
+i {
+    cursor: pointer;
+}
+
+.p-15 {
+    padding: 15px;
 }
 
 :root {
     /* colors */
     --body-background-color: #008B7C;
     --header: #E7E7E7;
+    --search-bar: #F9F9F9;
     --notice-nav: #82D6FB;
     --sent-msg: #D0F8B2;
-    --active-contact: #E6E9E8;
     --bottom-main: #E6E9E8;
     --active-chat: #E6E9E8;
     --small-text: #AEB1B4;
+    --header-icons: #A8A8A8;
+    --message-date: #C5C8C9;
 
     /* sizes */
     --right-col: 65%;
@@ -55,22 +61,12 @@ input {
 
 .user-image img {
     width: 60px;
-    height: 60px;
     border-radius: 50%;
 }
 
 .user-image.big img {
     width: 70px;
-    height: 70px;
     border-radius: 50%;
-}
-
-.user-text {
-    margin-left: 10px;
-}
-
-.user-name {
-    font-size: 20px;
 }
 
 .columns-header {
@@ -80,8 +76,14 @@ input {
     background-color: var(--header);
 }
 
+.user-text {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
 .header-icons i {
     padding-right: 10px;
+    color: var(--header-icons);
 }
 
 /* CONTAINER */
@@ -125,6 +127,7 @@ input {
 
 .notice-message {
     font-weight: 800;
+    margin-bottom: 2px;
 }
 
 .notice-link a {
@@ -134,7 +137,7 @@ input {
 /* COL-LEFT SEARCH-BAR */
 .search-bar {
     display: flex;
-    background-color: #F9F9F9;
+    background-color: var(--search-bar);
 }
 
 .search-icon {
@@ -142,7 +145,7 @@ input {
     align-items: center;
     justify-content: center;
     background-color: white;
-    color: lightgrey;
+    color: var(--header-icons);
     padding: 6px 24px;
 }
 
@@ -164,7 +167,7 @@ input {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
-    padding: 15px;
+    cursor: pointer;
 }
 
 .single-contact:last-child {
@@ -177,6 +180,7 @@ input {
 
 .single-contact .contact-info {
     display: flex;
+    width: 60%;
 }
 
 .single-contact:hover {
@@ -184,17 +188,19 @@ input {
 }
 
 .single-contact .contact-info .user-name {
-    font-size: 30px;
-    margin-left: 10px;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 .single-contact .contact-info .user-text {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--small-text);
+    margin-top: 5px;
+    margin-left: 0;
 }
 
 .single-contact .date-contact {
-    font-size: 8px;
+    font-size: 12px;
     color: var(--small-text);
 }
 
@@ -211,12 +217,8 @@ input {
     border-left: 1px solid lightgrey;
 }
 
-.chats-column .columns-header .user-text .name {
-    font-size: 30px;
-}
-
 .chats-column .columns-header .last-access {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--small-text);
 }
 
@@ -231,8 +233,6 @@ input {
 
 /* MESSAGE */
 .chat-message {
-    padding: 20px;
-    background: red;
     border-radius: 10px;
     margin: 20px 0;
     max-width: 55%;
@@ -240,12 +240,16 @@ input {
     position: relative;
 }
 
+.chat-message .message-text {
+    padding: 5px;
+}
+
 .chat-message .message-date {
     position: absolute;
-    bottom: 5px;
+    bottom: 2px;
     right: 5px;
-    color: grey;
-    font-size: 8px;
+    color: var(--message-date);
+    font-size: 10px;
 }
 
 .chat-message.sent {
@@ -262,7 +266,7 @@ input {
     position: absolute;
     top: 10%;
     right: 5%;
-    color: #B1B1B1;
+    color: lightgrey;
     font-size: 0.8em;
     display: none;
 }
@@ -276,22 +280,22 @@ input {
     position: absolute;
     right: 0;
     top: 40px;
+    z-index: 999;
     flex-direction: column;
-    align-self: flex-end;
     width: 150px;
     background-color: white;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    z-index: 999;
     font-size: 18px;
 }
 
 .chat-message .drop-down-menu .info {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgrey;
 }
 
 .chat-message .drop-down-menu .info,
 .chat-message .drop-down-menu .delete {
     padding: 1em;
+    font-size: 12px;
 }
 
 .chat-message .drop-down-menu .delete:hover,
@@ -305,17 +309,14 @@ input {
     display: flex;
     align-items: center;
     background-color: var(--bottom-main);
-    padding: 15px;
 }
 
 .chat-bottom-input {
     flex-grow: 1;
-    background-color: red;
 }
 
 .chat-bottom-input input {
     width: 100%;
-    padding: 15px;
     border: 0;
 }
 
