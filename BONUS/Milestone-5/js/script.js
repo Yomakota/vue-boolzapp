@@ -163,9 +163,6 @@ var app = new Vue(
                     this.currentActiveMessage.menu = true;
                 }
 
-                console.log(this.currentActiveMessage.menu);
-                console.log(this.currentActiveMessage.index);
-
             },
 
             removeMessage(index) {
@@ -174,7 +171,6 @@ var app = new Vue(
                 this.currentActiveMessage.status = false;
                 this.currentActiveMessage.index = null;
 
-                // console.log(this.contacts[this.currentActiveElement].messages[index]);
             },
             
             dateLastMessage(index) {
