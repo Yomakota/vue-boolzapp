@@ -67,6 +67,7 @@ i {
 .user-image.big img {
     width: 70px;
     border-radius: 50%;
+    margin-right: 10px;
 }
 
 .columns-header {
@@ -180,16 +181,18 @@ i {
 
 .single-contact .contact-info {
     display: flex;
-    width: 60%;
+    flex-direction: column;
+    width: 100%;
+}
+
+.single-contact .contact-info .contact-name-date {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
 }
 
 .single-contact:hover {
     background-color: lightgrey;
-}
-
-.single-contact .contact-info .user-name {
-    font-size: 20px;
-    margin-left: 20px;
 }
 
 .single-contact .contact-info .user-text {
