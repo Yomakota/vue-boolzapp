@@ -30,11 +30,11 @@ input {
     --sent-msg: #D0F8B2;
     --active-contact: #E6E9E8;
     --bottom-main: #E6E9E8;
+    --active-chat: #E6E9E8;
+    --small-text: #AEB1B4;
 
     /* sizes */
     --right-col: 65%;
-    --header-height: 80px;
-    --main-bottom-height: 80px;
 }
 
 /* COMMONS */
@@ -172,7 +172,7 @@ input {
 }
 
 .single-contact.active {
-    background-color: grey;
+    background-color: var(--active-chat);
 }
 
 .single-contact .contact-info {
@@ -190,12 +190,12 @@ input {
 
 .single-contact .contact-info .user-text {
     font-size: 10px;
-    color: lightgrey;
+    color: var(--small-text);
 }
 
 .single-contact .date-contact {
-    font-size: 10px;
-    color: lightgrey;
+    font-size: 8px;
+    color: var(--small-text);
 }
 
 /* COL-RIGHT */
@@ -217,7 +217,7 @@ input {
 
 .chats-column .columns-header .last-access {
     font-size: 10px;
-    color: grey;
+    color: var(--small-text);
 }
 
 /* CHAT */
