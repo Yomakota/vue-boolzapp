@@ -71,17 +71,34 @@
                     <label for="contacts-search" class="search-icon">
                         <i class="fas fa-search"></i>
                     </label>
-                    <input v-model="searchInputText" @keyup="searchContactChat" class="input" type="text"
-                        placeholder="Cerca o inizia una nuova chat" name="">
+                    <input 
+                            v-model="searchInputText" 
+                            @keyup="searchContactChat" 
+                            class="input" type="text"
+                            placeholder="Cerca o inizia una nuova chat" name=""
+                        >
                 </div>
 
                 <!-- Contacts List -->
                 <div class="contacts-list">
                     <ul>
                         <!-- Single-contact -->
-                        <li class="single-contact p-15" v-for="contact, index in contacts"
-                            @click="selectedContact(index)" :class="(currentActiveElement == index) ? 'active' : ''"
-                            v-if="contact.visible">
+
+                        <!-- <li 
+                            v-for="contact, index in contacts" 
+                            @click="selectedContact(index)"
+                            class="single-contact p-15" 
+                            :class="(currentActiveElement == index) ? 'active' : ''"
+                            v-if="contact.visible"
+                        > -->
+                            <li
+                                v-for="contact, index in contacts"
+                                @click="selectedContact(index)"
+                                class="single-contact p-15"
+                                :class="{'active' : index === currentActiveElement}"
+                                v-if="contact.visible"
+                            >
+
 
                             <div class="user-image big">
                                 <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
@@ -96,7 +113,7 @@
                                         {{dateLastMessage(index)}}
                                     </span>
                                 </div>
-                                
+
                                 <!-- Contact-last-text -->
                                 <div class="user-text">
                                     {{lastMessage(index)}}
@@ -140,15 +157,18 @@
                     <!-- <div class="chat-message p-15" :class="(message.status == 'sent') ? 'sent' : 'received'"
                         v-for="(message, index) in contacts[currentActiveElement].messages"> -->
 
-                        <!-- con classi con stesso nome proprieta -->
-                        <div class="chat-message p-15" :class="message.status"
-                            v-for="(message, index) in contacts[currentActiveElement].messages">
+                    <!-- con classi con stesso nome proprieta -->
+                    <div 
+                        class="chat-message p-15" 
+                        :class="message.status"
+                        v-for="(message, index) in contacts[currentActiveElement].messages">
 
-                            <!-- <div class="chat-message p-15" :class="{'sent' : message.status === 'sent' , 'received' : message.status === 'received' }"
+                        <!-- <div class="chat-message p-15" :class="{'sent' : message.status === 'sent' , 'received' : message.status === 'received' }"
                                 v-for="(message, index) in contacts[currentActiveElement].messages"> -->
 
                         <div class="message-text">{{message.text}}
-                            <i class="fas fa-chevron-down" @click="showDropDownMenu(index)"></i>
+                            <i class="fas fa-chevron-down" 
+                            @click="showDropDownMenu(index)"></i>
                         </div>
 
                         <div class="message-date">
@@ -158,7 +178,8 @@
                         <div class="drop-down-menu"
                             v-if="currentActiveMessage.menu && index === currentActiveMessage.index">
                             <div class="info"> info message </div>
-                            <div class="delete" @click="removeMessage(index)"> delete message </div>
+                            <div class="delete" 
+                            @click="removeMessage(index)"> delete message </div>
                         </div>
                     </div>
                 </div>
@@ -170,8 +191,13 @@
                     </div>
 
                     <div class="chat-bottom-input">
-                        <input @keyup.enter="sendNewMessage" v-model="newMessage" class="p-15" type="text"
-                            placeholder="Scrivi un messaggio">
+                        <input 
+                            @keyup.enter="sendNewMessage" 
+                            v-model="newMessage" 
+                            class="p-15" 
+                            type="text"
+                            placeholder="Scrivi un messaggio"
+                        >
                     </div>
 
                     <div class="chat-bottom-icon">
