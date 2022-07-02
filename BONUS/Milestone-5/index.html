@@ -136,8 +136,16 @@
                 <!-- Chats Main -->
                 <div class="chats-main">
                     <!-- message -->
-                    <div class="chat-message p-15" :class="(message.status == 'sent') ? 'sent' : 'received'"
-                        v-for="(message, index) in contacts[currentActiveElement].messages">
+
+                    <!-- <div class="chat-message p-15" :class="(message.status == 'sent') ? 'sent' : 'received'"
+                        v-for="(message, index) in contacts[currentActiveElement].messages"> -->
+
+                        <!-- con classi con stesso nome proprieta -->
+                        <div class="chat-message p-15" :class="message.status"
+                            v-for="(message, index) in contacts[currentActiveElement].messages">
+
+                            <!-- <div class="chat-message p-15" :class="{'sent' : message.status === 'sent' , 'received' : message.status === 'received' }"
+                                v-for="(message, index) in contacts[currentActiveElement].messages"> -->
 
                         <div class="message-text">{{message.text}}
                             <i class="fas fa-chevron-down" @click="showDropDownMenu(index)"></i>
