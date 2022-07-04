@@ -8,6 +8,11 @@ var app = new Vue(
     {
         el: '#root',
         data: {
+            searchInputText: '',
+            newMessage: '',
+            currentActiveElement: 0,
+            currentActiveMessage: null,
+            answer: 'ok',
             contacts: [
                 {
                     name: 'Michele',
@@ -93,33 +98,44 @@ var app = new Vue(
                     ],
                 },
             ],
-
-            currentActiveMessage: {
-                menu: false,
-                index: null,
-            },
-
-            currentActiveElement: 0,
-
-            newMessage: '',
-
-            answer: 'ok',
-
-            searchInputText: '',
         },
 
         methods: {
 
             selectedContact(index) {
                 this.currentActiveElement = index;
+                this.currentActiveMessage = null;
+            },
+            
+            showDropDownMenu(messageIndex) {
+
+                if (messageIndex === this.currentActiveMessage) {
+                    this.currentActiveMessage = null;
+                } else {
+                    this.currentActiveMessage = messageIndex;
+                }
+
+                // altro metodo con oggetto con una proprieta,in questo caso menu, di default = false e index = null
+
+                //  currentActiveMessage: {
+                //      menu: false,
+                //      index: null,
+                //  },
+
+                // if (this.currentActiveMessage.menu && this.currentActiveMessage.index === index) {
+                //     this.currentActiveMessage.menu = false;
+
+                // } else {
+                //     this.currentActiveMessage.index = index;
+                //     this.currentActiveMessage.menu = true;
+                // }
+
             },
 
             sendNewMessage() {
-
-                data = dayjs().format("DD/MM/YYYY HH:mm");
+                data = dayjs().format("DD/MM/YYYY HH:mm:ss");
 
                 if (this.newMessage.trim() != "") {
-
                     this.contacts[this.currentActiveElement].messages.push({
                         text: this.newMessage,
                         date: data,
@@ -129,12 +145,12 @@ var app = new Vue(
 
                 setTimeout(() => {
 
-                    answerReceviedDate = dayjs().format("DD/MM/YYYY HH:mm");
+                    answerReceviedDate = dayjs().format("DD/MM/YYYY HH:mm:ss");
 
                     this.contacts[this.currentActiveElement].messages.push({
                         text: this.answer,
                         status: 'received',
-                        date: answerReceviedDate,
+                        date: answerReceviedDate = dayjs().format("DD/MM/YYYY HH:mm:ss"),
                     });
 
                 }, 1000);
@@ -143,7 +159,6 @@ var app = new Vue(
             },
 
             searchContactChat() {
-
                 this.contacts.forEach((contact) => {
                     if (contact.name.toLowerCase().includes(this.searchInputText.toLowerCase())) {
                         contact.visible = true;
@@ -152,46 +167,52 @@ var app = new Vue(
                     }
                 });
             },
-
-            showDropDownMenu(index) {
-
-                if (this.currentActiveMessage.menu && this.currentActiveMessage.index === index) {
-                    this.currentActiveMessage.menu = false;
-
-                } else {
-                    this.currentActiveMessage.index = index;
-                    this.currentActiveMessage.menu = true;
-                }
-
-            },
-
+            
             removeMessage(index) {
                 this.contacts[this.currentActiveElement].messages.splice(index, 1);
 
                 this.currentActiveMessage.status = false;
                 this.currentActiveMessage.index = null;
-
             },
             
             dateLastMessage(index) {
+                const contactMessage = this.contacts[index].messages;
 
-                if (this.contacts[index].messages.length > 0) {
-
-                    lastMessage = this.contacts[index].messages.length - 1;
-                    lastMessageDate = this.contacts[index].messages[lastMessage].date;
-
-                    return lastMessageDate;
+                // se array vuoto torno stringa vuota
+                if( contactMessage.length === 0 ) {
+                    return '';
                 }
+
+                // altrimenti la data dell'ultimo elemento dell'array di messaggi
+                return contactMessage[contactMessage.length - 1].date;
+
+                // if (this.contacts[index].messages.length > 0) {
+                //     lastMessage = this.contacts[index].messages.length - 1;
+                //     lastMessageDate = this.contacts[index].messages[lastMessage].date;
+                //     return lastMessageDate;
+                // }
             },
 
             lastMessage(index) {
-                if (this.contacts[index].messages.length > 0) {
+                const contactMessage = this.contacts[index].messages;
 
-                    lastMessage = this.contacts[index].messages.length - 1;
-                    lastMessageText = this.contacts[index].messages[lastMessage].text;
-
-                    return lastMessageText;
+                // se array vuoto torno stringa vuota
+                if (contactMessage.length === 0) {
+                    return '';
                 }
+
+                // altrimenti taglio testo e torno il testo
+                let lastMessageText = contactMessage[contactMessage.length - 1].text;
+                if(lastMessageText.length > 20) {
+                    lastMessageText = lastMessageText.slice(0, 10) + '...';
+                }
+                return lastMessageText;
+
+                // if (this.contacts[index].messages.length > 0) {
+                //     lastMessage = this.contacts[index].messages.length - 1;
+                //     lastMessageText = this.contacts[index].messages[lastMessage].text;
+                //     return lastMessageText;
+                // }
             },
         }
     }

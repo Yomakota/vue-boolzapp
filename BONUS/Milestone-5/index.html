@@ -21,7 +21,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="css/style.css">
-    <title>Boolzapp</title>
+    <title>BoolZapp</title>
 </head>
 
 <body>
@@ -68,7 +68,9 @@
 
                 <!-- Search-bar -->
                 <div class="search-bar p-15">
-                    <label for="contacts-search" class="search-icon">
+                    <label 
+                        for="contacts-search" 
+                        class="search-icon">
                         <i class="fas fa-search"></i>
                     </label>
                     <input 
@@ -98,10 +100,11 @@
                                 :class="{'active' : index === currentActiveElement}"
                                 v-if="contact.visible"
                             >
-
-
                             <div class="user-image big">
-                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                                <img   
+                                    :src="`img/avatar${contact.avatar}.jpg`" 
+                                    :alt="contact.name"
+                                >
                             </div>
                             <!-- Contact-Info -->
                             <div class="contact-info">
@@ -131,10 +134,11 @@
                     <!-- User-Info -->
                     <div class="user-info">
                         <div class="user-image">
-                            <img :src="`img/avatar${contacts[currentActiveElement].avatar}.jpg`"
-                                alt="{contacts[currentActiveElement].name}">
+                            <img   
+                                :src="`img/avatar${contacts[currentActiveElement].avatar}.jpg`"
+                                alt="{contacts[currentActiveElement].name}"
+                            >
                         </div>
-
                         <div class="user-text">
                             <div class="name">{{contacts[currentActiveElement].name}}</div>
                             <div class="last-access">Ultimo accesso oggi alle {{dateLastMessage(currentActiveElement)}}
@@ -164,22 +168,35 @@
                         v-for="(message, index) in contacts[currentActiveElement].messages">
 
                         <!-- <div class="chat-message p-15" :class="{'sent' : message.status === 'sent' , 'received' : message.status === 'received' }"
-                                v-for="(message, index) in contacts[currentActiveElement].messages"> -->
+                        v-for="(message, index) in contacts[currentActiveElement].messages"> -->
+
+
+                        <!-- per altro metodo in script.js -->
+                        <!-- v-if="currentActiveMessage.menu && index === currentActiveMessage.index" -->
 
                         <div class="message-text">{{message.text}}
-                            <i class="fas fa-chevron-down" 
-                            @click="showDropDownMenu(index)"></i>
+                            <i  
+                                class="fas fa-chevron-down" 
+                                @click="showDropDownMenu(index)"
+                            >
+                            </i>
                         </div>
 
                         <div class="message-date">
                             {{message.date}}
                         </div>
 
-                        <div class="drop-down-menu"
-                            v-if="currentActiveMessage.menu && index === currentActiveMessage.index">
+                        <div 
+                            class="drop-down-menu" 
+                            v-if="currentActiveMessage === index"
+                        >
                             <div class="info"> info message </div>
-                            <div class="delete" 
-                            @click="removeMessage(index)"> delete message </div>
+                            <div 
+                                class="delete" 
+                                @click="removeMessage(index)"
+                            > 
+                                delete message 
+                            </div>
                         </div>
                     </div>
                 </div>
